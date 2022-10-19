@@ -1,0 +1,58 @@
+:root{
+    --colorPadrao: #777777;
+    --colorBlack: #000;
+    --colorPink: #C2185B;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--colorPadrao);
+}
+
+.inputs-box {
+    border-bottom: 2px solid var(--colorPink);
+    margin-top: 15px;
+    
+}
+
+.inputs-box input {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    flex: 1;
+    
+}
+.inputs-box label{
+    font-size: 18px;
+}
+
+.btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--colorPink);
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.input-msg {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.form{
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.title-form {
+    margin-bottom: 30px;
+    text-align: center;
+}

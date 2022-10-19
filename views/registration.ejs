@@ -1,0 +1,41 @@
+<%- include('./partials/header') %>
+    <div class="container-form">
+        
+        <div class="form">
+            <form action="#" method="POST">
+                <h1 class="title-form">Crie a Sua Conta</h1>
+                <div class="inputs-box">
+                    <label for="name">Nome</label>
+                    <div class="input-msg">
+                        <input type="text" name="name" id="name">
+                        <span id="msg-name"></span>
+                    </div>
+                </div>
+                <div class="inputs-box">
+                    <label for="email">E-mail</label>
+                    <div class="input-msg">
+                        <input type="email" name="email" id="email">
+                        <span id="msg-email"></span>
+                    </div>
+                </div>
+                <div class="inputs-box">
+                    <label for="password">Senha</label>
+                    <div class="input-msg">
+                        <input type="password" name="password" id="password">
+                        <span id="msg-senha"></span>
+                    </div>
+                </div>
+                <div class="inputs-box">
+                    <label for="confPasswor">Confirme a senha</label>
+                    <div class="input-msg">
+                        <input type="password" name="confPassword" id="confPassword">
+                        <span id="msg-conf-senha"></span>
+                    </div>
+                </div>
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+</html>
