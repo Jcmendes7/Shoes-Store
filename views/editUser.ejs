@@ -2,33 +2,33 @@
     <div class="container-form">
         
         <div class="form">
-            <form id="form" action="#" method="POST" >
+            <form id="form" action="#?_method=PUT" method="POST" >
                 <h1 class="title-form">Crie a Sua Conta</h1>
                 <div class="inputs-box-name">
                     <label for="name">Nome</label>
                     <div class="input-msg">
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" value="<%=user.name %>">
                         <span id="msg-name"></span>
                     </div>
                 </div>
                 <div class="inputs-box-email">
                     <label for="email">E-mail</label>
                     <div class="input-msg">
-                        <input type="email" name="email" id="email">
+                        <input type="email" name="email" id="email" value="<%=user.email%>">
                         <span id="msg-email"></span>
                     </div>
                 </div>
                 <div class="inputs-box-passWord">
                     <label for="password">Senha</label>
                     <div class="input-msg">
-                        <input type="password" name="password" id="password">
+                        <input type="password" name="password" id="password" value="<%=user.password%>">
                         <span id="msg-senha"></span>
                     </div>
                 </div>
                 <div class="inputs-box-conf-passWord">
                     <label for="confPasswor">Confirme a senha</label>
                     <div class="input-msg">
-                        <input type="password" name="confPassword" id="confPassword">
+                        <input type="password" name="confPassword" id="confPassword" value="<%=user.confPassword%>">
                         <span id="msg-conf-senha"></span>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     deve conter ao menos uma letra maiúscula <br>
                     deve conter ao menos um caractere especial <br>
                     deve conter ao menos 8 dos caracteres mencionados</span>
-                <button class="btn" type="submit">Enviar</button>
+                <button class="btn" type="submit">Editar</button>
             </form>
         </div>
     </div>

@@ -13,19 +13,28 @@ body {
     color: var(--colorPadrao);
 }
 
-.inputs-box {
+.inputs-box-name {
+    border-bottom: 2px solid var(--colorPink);
+    margin-top: 15px;
+    
+}
+.inputs-box-email {
+    border-bottom: 2px solid var(--colorPink);
+    margin-top: 15px;
+    
+}
+.inputs-box-passWord {
+    border-bottom: 2px solid var(--colorPink);
+    margin-top: 15px;
+    
+}
+.inputs-box-conf-passWord {
     border-bottom: 2px solid var(--colorPink);
     margin-top: 15px;
     
 }
 
-.inputs-box input {
-    border: none;
-    outline: 0;
-    padding: 8px;
-    flex: 1;
-    
-}
+
 .inputs-box label{
     font-size: 18px;
 }
@@ -52,7 +61,20 @@ body {
     margin-top: 20px;
 }
 
+.form input {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    flex: 1;
+}
+
 .title-form {
     margin-bottom: 30px;
     text-align: center;
+}
+
+#description-password {
+    color: red;
+    font-size: 16px;
+    display: none;
 }

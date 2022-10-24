@@ -1,11 +1,10 @@
 let express = require('express');
+let multer = require('multer');
 let router = express.Router();
+let usersController = require('../controllers/UsersController');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-
-
+router.get('/cadastrar',usersController.viewsForm);
+router.post('/cadastrar',usersController.createUsers);
+router.get('/:id/editar',usersController.editarUser);
+router.put('/:id/editar',usersController.updateById);
 module.exports = router;

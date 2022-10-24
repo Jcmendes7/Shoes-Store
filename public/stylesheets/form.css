@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .formulario {
     display: flex;
     margin: 20px;
@@ -73,12 +78,6 @@ textarea{
     font-size: 18px;
     border: 1px solid;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 
 
 #enviar button{
