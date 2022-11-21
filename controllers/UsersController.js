@@ -1,42 +1,107 @@
+const userModel = require("../models/modelRegister");
 const fs = require('fs');
-const path = require('path');
-const userModel = require('../models/modelRegister');
+const { validationResult } = require('express-validator');
+const bcrypt = require('bcrypt');
+const User = require("../models/modelRegister");
 
-//função para renderizar a pagina de formulário
-function viewsForm(req,res) {
-    return res.render('registration');
- }
+//função que mostra a tela de cadastro
+function cadastrar(req,res) {
+    res.render('registration')
+}
 
- //função  para criar um objeto de usuário
-
-function createUsers(req,res) {
-    const {name,email,password,confPassword} = req.body
-    userModel.create(name,email,password,confPassword)
-    res.redirect('/');
- }
-
-//função para editar Usuário
- function editarUser(req,res) {
-   const {id} = req.params;
-   const user = userModel.getById(id)
-   console.log(user)
-   return res.render('editUser',{user})
- }
-
- function updateById(req,res) {
-     const {id} = req.params;
-     console.log(id)
-    const {name,email,password,confPassword} = req.body
+/*Função que cria um novo usuário, recebe uma função create do Model */
+function createUsers(req, res) {
     
-    console.log(req.body)
-    userModel.update(id,name,email,password,confPassword)
-     
- }
+    const resultValid = validationResult(req);
+    
+    if(resultValid.errors.length > 0) {
+      return res.render('registration', {
+        errors: resultValid.mapped(),
+        oldData: req.body
+      })
+    }
+    
+    let userExist = userModel.findUserByField('email',req.body.email);
+    
+    if(userExist) {
+      return res.render('registration',{
+        errors: {
+          email: {
+            msg: 'Este email já esta cadastrado'
+          }
+        },
+        oldData: req.body
+      });
+    }
+    
+    let userToCreate = {
+      ...req.body,
+      password: bcrypt.hashSync(req.body.password,10),
+      confPassword: bcrypt.hashSync(req.body.confPassword,10),
+    }
+
+     userModel.create(userToCreate)
+    //redireciona para a Home
+     res.redirect("/login")
+  }
+
+ 
+
+function users(req, res) {
+  const users = JSON.parse(fs.readFileSync("database/usersRegister.json", "utf-8"));
+  res.render("users", { users });
+   res.redirect("/users");
+}
+
+function login(req,res) {
+  return res.render('login')
+}
+
+function loginSession(req,res) {
+  let userLogin = User.findUserByField('email',req.body.email);
+  const resultValid = validationResult(req);
+  if(resultValid.errors.length > 0) {
+    return res.render('login', {
+      errors: resultValid.mapped(),
+      oldData: req.body
+    })
+  }
+
+  if(userLogin) {
+    let passwordConfirm = bcrypt.compareSync(req.body.password,userLogin.password);
+    if(passwordConfirm) {
+      delete userLogin.password;
+      delete userLogin.confPassword;
+      req.session.userLogged = userLogin;
+
+      return res.redirect('/')
+    }
+
+    return res.render("login",{
+      errors: {
+        email: {
+          msg: 'Email ou Senha incorretas'
+        }
+      }
+    })
+  }
+
+  return res.render("login",{
+    errors: {
+      email: {
+        msg: 'Este email não foi encontrado'
+      }
+    },
+  })
+  
+
+}
 
 //module para exportar as funções
- module.exports = {
-     viewsForm,
-     createUsers,
-     editarUser,
-     updateById,
- }
+module.exports = {
+  createUsers,
+  users,
+  login,
+  loginSession,
+  cadastrar
+};

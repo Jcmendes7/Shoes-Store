@@ -3,26 +3,39 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let methodOverride = require('method-override');
+let session = require('express-session');
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
-let methodOverride = require('method-override');
+let loginRouter = require('./routes/loginRouter');
+let trabalheConoscoRouter = require('./routes/routerTrabalheConosco');
+
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(methodOverride('_method'))
 
+app.use(session({
+  secret: "senhasecreta",
+  resave: false,
+  saveUninitialized: false
+}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'))
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/',usersRouter);
+app.use('/',trabalheConoscoRouter);
+
 
 
 // catch 404 and forward to error handler

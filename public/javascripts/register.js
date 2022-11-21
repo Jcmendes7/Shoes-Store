@@ -1,9 +1,6 @@
 /*pegando as variáveis dos inputs e divs */
 const form = document.getElementById("form");
 const inputName = document.getElementById("name");
-const dvBorderName = document.querySelector(".inputs-box-name");
-const dvBorderEmail = document.querySelector(".inputs-box-email");
-const dvBorderPassWord = document.querySelector(".inputs-box-passWord");
 const inputPassword = document.getElementById("password");
 const inputConfPassword = document.getElementById("confPassword");
 const descriptionPassword = document.getElementById("description-password");
@@ -16,9 +13,9 @@ const inputemail = document.getElementById("email");
 function validName(valid) {
   const msg = document.getElementById("msg-name");
   if (inputName.value === "") {
-    dvBorderName.style.borderColor = "red";
+    inputName.style.borderColor = "red";
   } else {
-    dvBorderName.style.borderColor = "green";
+    inputName.style.borderColor = "#C2185B";
   }
 }
 
@@ -38,28 +35,28 @@ function validPassword(password) {
 
 function confPassword(confPassword) {
   if (inputPassword.value !== inputConfPassword.value) {
-    dvBorderConfPassWord.style.borderColor = "red";
+    inputConfPassword.style.borderColor = "red";
     descriptionPassword.innerHTML = "";
   } else {
-    dvBorderConfPassWord.style.borderColor = "green";
+    inputConfPassword.style.borderColor = "#C2185B";
   }
 }
 
 //EventListener para o email
 inputemail.addEventListener("keyup", () => {
   if (validaEmail(inputemail.value) !== true) {
-    dvBorderEmail.style.borderColor = "red";
+    inputemail.style.borderColor = "red";
   } else {
-    dvBorderEmail.style.borderColor = "green";
+    inputemail.style.borderColor = "#C2185B";
   }
 });
 
 inputPassword.addEventListener("input", () => {
   if (validPassword(inputPassword.value) !== true) {
-    dvBorderPassWord.style.borderColor = "red";
+    inputPassword.style.borderColor = "red";
     descriptionPassword.style.display = "block";
   } else {
-    dvBorderPassWord.style.borderColor = "green";
+    inputPassword.style.borderColor = "#C2185B";
     descriptionPassword.style.display = "none";
   }
 });

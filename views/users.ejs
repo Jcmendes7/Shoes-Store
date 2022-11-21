@@ -1,0 +1,18 @@
+
+    <title>Usuários</title>
+</head>
+<%- include('./partials/header') %>
+<main class="main-users">
+    <div class="users-list">
+
+        <h1>Lista De Usuários</h1>
+            <% for(let user of users ) { %>
+            
+                <li><%= user.name%></li>
+            
+            <% } %>
+    </div>
+</main>
+<%- include('./partials/footer') %>
+</body>
+</html>

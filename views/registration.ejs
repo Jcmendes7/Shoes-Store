@@ -1,44 +1,48 @@
 <%- include('./partials/header') %>
     <div class="container-form">
         
-        <div class="form">
-            <form id="form" action="#" method="POST" >
-                <h1 class="title-form">Crie a Sua Conta</h1>
-                <div class="inputs-box-name">
+        <div class="form-register">
+            <form id="form-register" action="/users/cadastrar" method="POST" >
+                <div class="title-form">
+                    <h1>Criar Conta</h1>
+                </div>
+                <div class="inputs-box-register">
                     <label for="name">Nome</label>
-                    <div class="input-msg">
-                        <input type="text" name="name" id="name">
-                        <span id="msg-name"></span>
-                    </div>
+                    <input type="text" name="name" id="name" value="<%= locals.oldData ? oldData.name: null %>"
+                        >
                 </div>
-                <div class="inputs-box-email">
+                <% if(locals.errors && errors.name)  { %>
+                    <span id="msg-name"> <%= errors.name.msg %> </span>
+               <% } %> 
+                <div class="inputs-box-register">
                     <label for="email">E-mail</label>
-                    <div class="input-msg">
-                        <input type="email" name="email" id="email">
-                        <span id="msg-email"></span>
-                    </div>
+                        <input type="text" name="email" id="email" 
+                        value="<%= locals.oldData ? oldData.email: null %>"
+                        >
                 </div>
-                <div class="inputs-box-passWord">
+                <% if(locals.errors && errors.email)  { %>
+                    <span id="msg-name"> <%= errors.email.msg %> </span>
+               <% } %>
+                <div class="inputs-box-register">
                     <label for="password">Senha</label>
-                    <div class="input-msg">
-                        <input type="password" name="password" id="password">
-                        <span id="msg-senha"></span>
-                    </div>
+                    <input type="password" name="password" id="password">
+                        
                 </div>
-                <div class="inputs-box-conf-passWord">
+                <% if(locals.errors && errors.password)  { %>
+                    <span id="msg-name"> <%= errors.password.msg %> </span>
+               <% } %>
+                <div class="inputs-box-register">
                     <label for="confPasswor">Confirme a senha</label>
-                    <div class="input-msg">
-                        <input type="password" name="confPassword" id="confPassword">
-                        <span id="msg-conf-senha"></span>
-                    </div>
+                    <input type="password" name="confPassword" id="confPassword">
                 </div>
+                
                 <span id="description-password">
                     deve conter ao menos um dígito <br>
                     deve conter ao menos uma letra minúscula <br>
                     deve conter ao menos uma letra maiúscula <br>
                     deve conter ao menos um caractere especial <br>
                     deve conter ao menos 8 dos caracteres mencionados</span>
-                <button class="btn" type="submit">Enviar</button>
+                <button class="btn-register" type="submit">Enviar</button>
             </form>
         </div>
     </div>

@@ -1,0 +1,53 @@
+
+    <%- include('./partials/header') %>
+    
+    <body>
+    <main>
+
+<div class="container-form-login">
+
+<div class="form-login">
+    <form id="form-login" action="#" method="post" >
+        <div class="title-login">
+            <h1>Shoes Store</h1>
+        </div>
+        <div class="inputs-box-login">
+            <label for="email">E-mail</label>
+            
+            <input type="text" name="email" id="email" >
+        
+        </div>
+        <% if(locals.errors && errors.email)  { %>
+            <span id="msg-name"> <%= errors.email.msg %> </span>
+       <% } %>
+        <div class="inputs-box-login">
+            <label for="password">Senha</label>
+           
+            <input type="password" name="password" id="password">       
+            
+        </div>
+        <% if(locals.errors && errors.password)  { %>
+            <span id="msg-name"> <%= errors.password.msg %> </span>
+       <% } %>
+            <button class="btn-login" type="submit">Login</button>
+    </form>
+    <div class="recuperar-senha">
+        <a href="#">Recuperar Senha</a>
+    </div>
+    <div class="divisao-criarConta">
+
+    </div>
+        <a class="link-cadastrar" href="/users/cadastrar">
+            <button class="criar-conta"> 
+                    Criar conta
+            </button>
+        </a>
+    
+</div>
+
+</div>
+    </main>
+
+    <%- include('./partials/footer') %>
+</body>
+</html>

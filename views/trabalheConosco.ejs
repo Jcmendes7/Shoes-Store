@@ -1,0 +1,129 @@
+<%- include('./partials/header') %>
+
+<section class="form-trabalheConosco">
+        
+    <form id="form-trabalheConosco" 
+        action="#" enctype="multipart/form-data"  method="post"  >
+        <div class="title-faleConosco">
+            <h1>Faça parte do nosso time</h1>
+        </div>
+        <div class="div-imputs">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+        </div>
+        <% if(locals.errors && errors.nome)  { %>
+            <span id="msg-error"> <%= errors.nome.msg %> </span>
+       <% } %>
+        <div class="div-imputs">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="email@me.com">
+        </div>
+        <% if(locals.errors && errors.email)  { %>
+            <span id="msg-error"> <%= errors.email.msg %> </span>
+       <% } %>
+
+
+        <div class="div-imputs">
+            <label for="Telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone">
+        </div>
+        <% if(locals.errors && errors.telefone)  { %>
+            <span id="msg-error"> <%= errors.telefone.msg %> </span>
+       <% } %>
+
+        <div class="departamentos">
+            <label for="departamentos">Departamentos</label>
+            <select name ="departamentos" id="departamentos">
+                <option selected disabled>Selecione</option>
+                <option value="rh">Recursos Humanos</option>
+                <option value="vendas">Vendas</option>
+                <option value="mkt">Marketing</option>
+                <br />
+            </select>
+        </div>
+        <% if(locals.errors && errors.departamentos)  { %>
+            <span id="msg-error"> <%= errors.departamentos.msg %> </span>
+       <% } %>
+
+        <div id="disponibilidade">
+            <label for="disponibilidade">Disponibilidade</label>
+        </div>
+                
+        <div class="checkbox">
+            <input type="checkbox" name="disponibilidade" value="integral" id="integral"><label for="integral">Integral</label>
+        </div>
+                
+        <div class="checkbox">
+            <input type="checkbox" 
+            name="disponibilidade" 
+            id="meioPeriodo" 
+            value="meioPerido">
+            <label for="meioPeriodo">Meio Período(4h)</label>
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" 
+            name="disponibilidade" 
+            id="freelancer" 
+            value="freelancer">
+            <label for="freelancer">Freelancer</label><br>
+        </div>
+
+        <% if(locals.errors && errors.disponibilidade)  { %>
+            <span id="msg-error"> <%= errors.disponibilidade.msg %> </span>
+       <% } %>
+
+        <div class="title-contato" >
+            <label>
+                Qual a melhor forma para entrarmos em contato?
+            </label>
+        </div>
+
+        <div class="contato">
+            <input type="radio" 
+            name="contato" 
+            id="email"
+            value="email">
+            <label for="email">Email</label>
+        </div>
+        <div class="contato">
+            <input type="radio"
+            name="contato"
+            id="ligacao"
+            value="ligacao">
+            <label for="ligacao">Ligação</label>
+        </div>
+
+        <div class="contato">
+            <input type="radio"
+             name="contato"
+             id="whatsapp"
+             value="whatsapp">
+             <label for="whatsapp">WhatsApp</label>
+        </div>
+
+        <% if(locals.errors && errors.contato)  { %>
+            <span id="msg-error"> <%= errors.contato.msg %> </span>
+       <% } %>
+
+        <div class="curriculo">
+            <label for="curriculo">Currículo</label> 
+            <input type="file" name="curriculo">
+        </div>
+        <% if(locals.errors && errors.curriculo)  { %>
+            <span id="msg-error"> <%= errors.curriculo.msg %> </span>
+       <% } %>
+
+        <!-- <div class="mensagem">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem">
+            </textarea>
+        </div> -->
+    <button class="btn-trabalheConosco" type="submit">Enviar</button>
+  </form>
+</section>
+
+    <%- include('./partials/footer') %>
+    
+</body>
+</html>

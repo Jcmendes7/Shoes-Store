@@ -1,10 +1,18 @@
-let express = require('express');
-let multer = require('multer');
-let router = express.Router();
-let usersController = require('../controllers/UsersController');
+const express = require('express');
+const router = express.Router();
 
-router.get('/cadastrar',usersController.viewsForm);
-router.post('/cadastrar',usersController.createUsers);
-router.get('/:id/editar',usersController.editarUser);
-router.put('/:id/editar',usersController.updateById);
+const usersController = require('../controllers/UsersController');
+const userMiddleware = require('../middlewares/userMiddleware');
+const loginMiddleware = require('../middlewares/loginMiddleware');
+
+//rotas
+
+
+router.get('/cadastrar',usersController.cadastrar);
+router.post('/cadastrar',userMiddleware,usersController.createUsers);
+router.get('/',usersController.users);
+router.get("/login", usersController.login);
+router.post("/login",loginMiddleware ,usersController.loginSession);
+
+
 module.exports = router;

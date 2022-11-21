@@ -1,9 +1,7 @@
 const fs = require("fs");
-const { dirname } = require("path");
 
-
-  const User = {
-    fileName: 'database/usersRegister.json',
+const Jobs = {
+    fileName: 'database/jobs.json',
     create: function(userDate) {
       let allUser = this.getUsers();
       let newUser = {
@@ -25,7 +23,7 @@ const { dirname } = require("path");
     },
 
     getUsers: function() {
-      return JSON.parse(fs.readFileSync("database/usersRegister.json", "utf-8"))
+      return JSON.parse(fs.readFileSync("database/jobs.json", "utf-8"))
     },
 
     findUserById: function() {
@@ -41,4 +39,4 @@ const { dirname } = require("path");
     }
   }
 
-  module.exports = User
+  module.exports = Jobs;
