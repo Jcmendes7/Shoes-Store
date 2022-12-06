@@ -45,13 +45,6 @@ function createUsers(req, res) {
      res.redirect("/login")
   }
 
- 
-
-function users(req, res) {
-  const users = JSON.parse(fs.readFileSync("database/usersRegister.json", "utf-8"));
-  res.render("users", { users });
-   res.redirect("/users");
-}
 
 function login(req,res) {
   return res.render('login')
@@ -100,7 +93,6 @@ function loginSession(req,res) {
 //module para exportar as funções
 module.exports = {
   createUsers,
-  users,
   login,
   loginSession,
   cadastrar

@@ -4,13 +4,12 @@
 <%- include('./partials/header') %>
 <main class="main-users">
     <div class="users-list">
-
         <h1>Lista De Usuários</h1>
-            <% for(let user of users ) { %>
-            
-                <li><%= user.name%></li>
-            
-            <% } %>
+        <% for(let users of user ) { %>
+        
+            <li><%= users.full_name%></li>
+        
+        <% } %>
     </div>
 </main>
 <%- include('./partials/footer') %>

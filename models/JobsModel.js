@@ -12,7 +12,6 @@ const Jobs = {
       fs.writeFileSync(this.fileName,JSON.stringify(allUser,null, ' '));
       return newUser;
     },
-
     generateId: function() {
       let allUser = this.getUsers();
       let lastUser = allUser.pop();
